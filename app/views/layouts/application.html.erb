@@ -1,3 +1,6 @@
+<!-- this is a wrapper file for all application views 
+i.e. anythng here will show up in all views.
+-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +13,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+    <%= render 'layouts/navigation' %>	<!-- partials here -->
+    <%= render 'layouts/messages' %> <!-- partials here -->
+    <div class="container">
+      <%= yield %>
+    </div>  
+    <%= render 'layouts/footer' %>
   </body>
 </html>
