@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about' 
   
   resources :articles
+  
+  get 'signup', to: 'users#new' # already define the route for new
+  resources :users, except: [:new] # new route is defined above line
 end
