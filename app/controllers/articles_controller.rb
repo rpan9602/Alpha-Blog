@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
   def index
-    @articles = Article.all	# get all from database
+    # @articles = Article.all	# get all from database. it would be too much to display. use paginate below.
+    # @articles = Article.paginate(page: params[:page]) # load default numbers per page.
+    @articles = Article.paginate(page: params[:page], per_page: 5) # list 5 per page
   end
   
   def new

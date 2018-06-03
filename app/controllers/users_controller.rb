@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index # show users list
-    @users = User.all
+    #@users = User.all
+    @users = User.paginate(page: params[:page], per_page: 5) # list 5 per page
   end
   
   def new
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
   
   private
