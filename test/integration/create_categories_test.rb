@@ -17,7 +17,8 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
       post categories_path, params: {category: { name: "sports" } }
       follow_redirect!
       
-      assert_equal "/categories", categories_path # categories_path is redirected to from Create/if
+      #assert_equal "/categories", categories_path # categories_path is redirected to from Create/if
+      assert_template 'categories/index'
       assert_equal Category.create_success_message, flash[:success]
       assert_match "sports", response.body
     end
@@ -40,7 +41,8 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
       # rails 5:
       post categories_path, params: { category: { name:" " } }
       
-      assert_equal "/categories/new", new_category_path # new_category_path is from Create/else.
+      #assert_equal 'categories/new', new_category_path # new_category_path is from Create/else.
+      assert_template 'categories/new'
       assert_select 'h2.panel-title'
       assert_select 'div.panel-body'
       

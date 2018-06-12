@@ -37,7 +37,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest # rails 5
       post "/categories", params: {category: { name: "sports" } }
       assert_response :success
       
-      assert_template '/categories/new'
+      assert_template 'categories/new'
       #assert_template :new
     
       #assert_redirected_to new_category_path
